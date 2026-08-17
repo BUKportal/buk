@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0787c9">
+
+  <title>BUK Undergraduate Screening Exercise</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="header">
+
+    <div class="brand">
+      <img
+        src="buk-logo.png"
+        alt="Bayero University, Kano"
+      >
+
+      <div>
+        <strong>Bayero University, Kano</strong>
+        <span>Undergraduate Screening Exercise</span>
+      </div>
+    </div>
+
+    <button
+      id="menuBtn"
+      class="menu-btn"
+      type="button"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN PORTAL SHELL
+  ========================== -->
+  <div class="shell">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="portal-title">
+        SCREENING PORTAL
+      </div>
+
+      <button
+        class="nav active"
+        data-page="home"
+        type="button"
+      >
+        Home
+      </button>
+
+      <button
+        class="nav"
+        data-page="profile"
+        type="button"
+      >
+        Candidate Profile
+      </button>
+
+      <button
+        class="nav"
+        data-page="olevel"
+        type="button"
+      >
+        O' Level Result
+      </button>
+
+      <button
+        class="nav"
+        data-page="payment"
+        type="button"
+      >
+        Payment
+      </button>
+
+      <button
+        class="nav"
+        data-page="acknowledgement"
+        type="button"
+      >
+        Acknowledgement Slip
+      </button>
+
+      <button
+        class="nav"
+        data-page="status"
+        type="button"
+      >
+        Application Status
+      </button>
+
+      <div class="sidebar-note">
+        For prospective undergraduate candidates
+      </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main">
+
+
+      <!-- =========================
+           HOME
+      ========================== -->
+      <section
+        id="home"
+        class="page active"
+      >
+
+        <div class="hero">
+
+          <div>
+
+            <div class="small-label">
+              2026/2027 SESSION
+            </div>
+
+            <h1>
+              Undergraduate Screening Exercise
+            </h1>
+
+            <p>
+              Welcome to the Bayero University, Kano
+              online screening portal for prospective
+              candidates.
+            </p>
+
+          </div>
+
+          <div class="hero-mark">
+            BUK
+          </div>
+
+        </div>
+
+
+        <!-- Dashboard cards -->
+        <div class="grid3">
+
+          <div class="card stat">
+
+            <span>
+              Candidate
+            </span>
+
+            <b id="candidateName">
+              Not logged in
+            </b>
+
+            <small>
+              Applicant profile
+            </small>
+
+          </div>
+
+
+          <div class="card stat">
+
+            <span>
+              O' Level
+            </span>
+
+            <b id="olevelHome">
+              Not Submitted
+            </b>
+
+            <small>
+              Academic result
+            </small>
+
+          </div>
+
+
+          <div class="card stat">
+
+            <span>
+              Payment
+            </span>
+
+            <b id="paymentHome">
+              Pending
+            </b>
+
+            <small>
+              Screening fee
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- Screening process -->
+        <div class="card">
+
+          <h2>
+            Screening Process
+          </h2>
+
+          <p class="muted">
+            Complete the steps in order. This portal
+            is designed for prospective undergraduate
+            candidates.
+          </p>
+
+
+          <div class="process">
+
+            <div>
+
+              <i>1</i>
+
+              <b>
+                Candidate Profile
+              </b>
+
+              <span>
+                Enter your UTME details and complete
+                your applicant information.
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <i>2</i>
+
+              <b>
+                O' Level Update
+              </b>
+
+              <span>
+                Provide up to two O' Level examination
+                results.
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <i>3</i>
+
+              <b>
+                Payment
+              </b>
+
+              <span>
+                Generate your payment reference and
+                complete the screening payment.
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <i>4</i>
+
+              <b>
+                Acknowledgement
+              </b>
+
+              <span>
+                Print your acknowledgement after the
+                required steps are completed.
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="notice">
+
+          <b>
+            Important:
+          </b>
+
+          Enter information exactly as it appears
+          in your JAMB records and credentials.
+          False information may lead to
+          disqualification.
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =========================
+           CANDIDATE PROFILE
+      ========================== -->
+      <section
+        id="profile"
+        class="page"
+      >
+
+        <div class="title">
+
+          <div class="small-label">
+            STEP 1
+          </div>
+
+          <h1>
+            Candidate Profile
+          </h1>
+
+          <p>
+            Provide the personal and contact
+            information required for screening.
+          </p>
+
+        </div>
+
+
+        <form
+          id="profileForm"
+          class="card form"
+        >
+
+          <h2>
+            JAMB / Candidate Information
+          </h2>
+
+
+          <div class="form-grid">
+
+            <label>
+              UTME Registration Number
+
+              <input
+                name="utme"
+                type="text"
+                required
+              >
+            </label>
+
+
+            <label>
+              UTME Score
+
+              <input
+                name="utmeScore"
+                type="number"
+                min="0"
+                max="400"
+                required
+              >
+            </label>
+
+
+            <label>
+              First Name
+
+              <input
+                name="firstName"
+                type="text"
+                required
+              >
+            </label>
+
+
+            <label>
+              Middle Name
+
+              <input
+                name="middleName"
+                type="text"
+              >
+            </label>
+
+
+            <label>
+              Last Name
+
+              <input
+                name="lastName"
+                type="text"
+                required
+              >
+            </label>
+
+
+            <label>
+              State of Origin
+
+              <input
+                name="state"
+                type="text"
+                required
+              >
+            </label>
+
+
+            <label>
+              LGA of Origin
+
+              <input
+                name="lga"
+                type="text"
+                required
+             
