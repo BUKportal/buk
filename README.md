@@ -1,2 +1,0 @@
-# buk
-Educational 
