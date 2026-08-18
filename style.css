@@ -1,0 +1,119 @@
+/* =========================================
+   BUK SCREENING ENGINE - V3
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   GENERAL CONTAINER
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.header-inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: #333333;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+/* Temporary logo */
+
+.logo-placeholder {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    border: 2px solid #006633;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #006633;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+
+    min-height: 48px;
+}
+
+.nav-link {
+    display: block;
+
+    padding: 14px 20px;
+
+    color: #555555;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: #006633;
+}
+
+.nav-link.active {
+    color: #006633;
