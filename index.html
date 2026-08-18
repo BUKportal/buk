@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>myBUKAdmission Engine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+
+                <!-- Replace this temporary logo with the authorized BUK logo -->
+                <div class="logo-placeholder">
+                    BUK
+                </div>
+
+                <span>Screening Engine</span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="index.html" class="nav-link active">
+                Home
+            </a>
+
+            <a href="#login" class="nav-link">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MOBILE MENU AREA -->
+    <div class="mobile-menu">
+
+        <div class="container">
+
+            <span class="menu-title">
+                Menu
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- UNIVERSITY TITLE -->
+        <section class="portal-heading">
+
+            <div class="container">
+
+                <h1>
+                    Bayero University, Kano
+                </h1>
+
+                <h2>
+                    Undergraduate Screening Exercise Engine
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <div class="divider"></div>
+
+
+        <!-- LOGIN -->
+        <section class="login-area" id="login">
+
+            <div class="container">
+
+                <div class="login-wrapper">
+
+                    <h3>
+                        Login Page
+                    </h3>
+
+                    <div class="divider small"></div>
+
+
+                    <form id="loginForm">
+
+
+                        <!-- USERNAME / JAMB -->
+                        <div class="form-row">
+
+                            <label for="jambNumber">
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                id="jambNumber"
+                                name="jambNumber"
+                                placeholder="Jamb Number"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- STATE -->
+                        <div class="form-row">
+
+                            <label for="state">
+                                State
+                            </label>
+
+                            <select
+                                id="state"
+                                name="state"
+                                required
+                            >
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option>Abia</option>
+                                <option>Adamawa</option>
+                                <option>Akwa Ibom</option>
+                                <option>Anambra</option>
+                                <option>Bauchi</option>
+                                <option>Bayelsa</option>
+                                <option>Benue</option>
+                                <option>Borno</option>
+                                <option>Cross River</option>
+                                <option>Delta</option>
+                                <option>Ebonyi</option>
+                                <option>Edo</option>
+                                <option>Ekiti</option>
+                                <option>Enugu</option>
+                                <option>FCT</option>
+                                <option>Gombe</option>
+                                <option>Imo</option>
+                                <option>Jigawa</option>
+                                <option>Kaduna</option>
+                                <option>Kano</option>
+                                <option>Katsina</option>
+                                <option>Kebbi</option>
+                                <option>Kogi</option>
+                                <option>Kwara</option>
+                                <option>Lagos</option>
+                                <option>Nasarawa</option>
+                                <option>Niger</option>
+                                <option>Ogun</option>
+                                <option>Ondo</option>
+                                <option>Osun</option>
+                                <option>Oyo</option>
+                                <option>Plateau</option>
+                                <option>Rivers</option>
+                                <option>Sokoto</option>
+                                <option>Taraba</option>
+                                <option>Yobe</option>
+                                <option>Zamfara</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- GENDER -->
+                        <div class="form-row">
+
+                            <label for="gender">
+                                Gender
+                            </label>
+
+                            <select
+                                id="gender"
+                                name="gender"
+                                required
+                            >
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- BUTTON -->
+                        <div class="button-row">
+
+                            <button
+                                type="submit"
+                                id="loginButton"
+                            >
+                                Login
+                            </button>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+                        <div
+                            id="loginMessage"
+                            class="login-message"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container">
+
+            <p>
+                Bayero University, Kano
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+  </html>
