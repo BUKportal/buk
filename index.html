@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0787c9">
+  <title>BUK Direct Entry Screening</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="brand">
+    <img src="buk-logo.png" alt="Bayero University, Kano">
+    <div>
+      <strong>Bayero University, Kano</strong>
+      <span>Direct Entry Screening Exercise</span>
+    </div>
+  </div>
+
+  <button id="menuBtn" class="menu-btn">☰</button>
+</header>
+
+
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="portal-title">SCREENING PORTAL</div>
+
+    <button class="nav active" data-page="login">
+      Login
+    </button>
+
+    <button class="nav" data-page="profile">
+      Profile Update
+    </button>
+
+    <button class="nav" data-page="olevel">
+      O' Level Result
+    </button>
+
+    <button class="nav" data-page="payment">
+      Payment
+    </button>
+
+    <button class="nav" data-page="acknowledgement">
+      Acknowledgement Slip
+    </button>
+
+    <button class="nav" data-page="status">
+      Application Status
+    </button>
+
+    <div class="sidebar-note">
+      For prospective Direct Entry candidates
+    </div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <!-- =====================================================
+         LOGIN
+         ===================================================== -->
+
+    <section id="login" class="page active">
+
+      <div class="hero">
+
+        <div>
+
+          <div class="small-label">
+            BUKDES ONLINE REGISTRATION
+          </div>
+
+          <h1>
+            Bayero University Kano Direct Entry Screening
+          </h1>
+
+          <p>
+            Login using your DE Number, State of Origin and Gender
+            to continue with your screening registration.
+          </p>
+
+        </div>
+
+        <div class="hero-mark">
+          BUK
+        </div>
+
+      </div>
+
+
+      <div class="card login-card">
+
+        <div class="login-heading">
+          <img src="buk-logo.png" alt="BUK">
+          <h2>
+            BAYERO UNIVERSITY KANO DIRECT ENTRY SCREENING
+          </h2>
+
+          <h3>
+            (BUKDES) ONLINE REGISTRATION
+          </h3>
+        </div>
+
+
+        <form id="loginForm" class="form">
+
+          <label>
+            DE Number
+            <input
+              type="text"
+              name="deNumber"
+              id="deNumber"
+              placeholder="DE Number"
+              autocomplete="off"
+              required
+            >
+          </label>
+
+
+          <label>
+            State of Origin
+            <select
+              name="state"
+              id="loginState"
+              required
+            >
+              <option value="">Select State of Origin</option>
+              <option>Abia</option>
+              <option>Adamawa</option>
+              <option>Akwa Ibom</option>
+              <option>Anambra</option>
+              <option>Bauchi</option>
+              <option>Bayelsa</option>
+              <option>Benue</option>
+              <option>Borno</option>
+              <option>Cross River</option>
+              <option>Delta</option>
+              <option>Ebonyi</option>
+              <option>Edo</option>
+              <option>Ekiti</option>
+              <option>Enugu</option>
+              <option>Gombe</option>
+              <option>Imo</option>
+              <option>Jigawa</option>
+              <option>Kaduna</option>
+              <option>Kano</option>
+              <option>Katsina</option>
+              <option>Kebbi</option>
+              <option>Kogi</option>
+              <option>Kwara</option>
+              <option>Lagos</option>
+              <option>Nasarawa</option>
+              <option>Niger</option>
+              <option>Ogun</option>
+              <option>Ondo</option>
+              <option>Osun</option>
+              <option>Oyo</option>
+              <option>Plateau</option>
+              <option>Rivers</option>
+              <option>Sokoto</option>
+              <option>Taraba</option>
+              <option>Yobe</option>
+              <option>Zamfara</option>
+              <option>FCT</option>
+            </select>
+          </label>
+
+
+          <label>
+            Gender
+            <select
+              name="gender"
+              id="loginGender"
+              required
+            >
+              <option value="">Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </label>
+
+
+          <button
+            class="primary"
+            type="submit"
+            id="loginBtn"
+          >
+            Login
+          </button>
+
+        </form>
+
+
+        <div class="login-help">
+          Please ensure that the information entered is correct.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROFILE UPDATE
+         ===================================================== -->
+
+    <section id="profile" class="page">
+
+      <div class="title">
+
+        <div class="small-label">
+          STEP 2
+        </div>
+
+        <h1>
+          Profile Update
+        </h1>
+
+        <p>
+          Provide the information required for your Direct Entry
+          screening registration.
+        </p>
+
+      </div>
+
+
+      <form id="profileForm" class="card form">
+
+        <h2>
+          Personal Information
+        </h2>
+
+
+        <div class="form-grid">
+
+          <label>
+            First Name
+            <input
+              name="firstName"
+              required
+            >
+          </label>
+
+
+          <label>
+            Middle Name
+            <input
+              name="middleName"
+            >
+          </label>
+
+
+          <label>
+            Last Name
+            <input
+              name="lastName"
+              required
+            >
+          </label>
+
+
+          <label>
+            Date of Birth
+            <input
+              name="dob"
+              type="date"
+              required
+            >
+          </label>
+
+
+          <label>
+            LGA of Origin
+            <input
+              name="lga"
+              required
+            >
+          </label>
+
+        </div>
+
+
+        <h2>
+          Contact Information
+        </h2>
+
+
+        <div class="form-grid">
+
+          <label>
+            Phone Number Used When Registering With JAMB
+            <input
+              name="phone"
+              type="tel"
+              required
+            >
+          </label>
+
+
+          <label>
+            Email Address Used When Registering With JAMB
+            <input
+              name="email"
+              type="email"
+              required
+            >
+          </label>
+
+
+          <label>
+            Alternate Phone Number
+            <input
+              name="altPhone"
+              type="tel"
+            >
+          </label>
+
+
+          <label>
+            Alternate Email Address
+            <input
+              name="altEmail"
+              type="email"
+            >
+          </label>
+
+
+          <label class="wide">
+            Contact Address
+            <textarea
+              name="address"
+              rows="3"
+              required
+            ></textarea>
+          </label>
+
+        </div>
+
+
+        <h2>
+          Next of Kin
+        </h2>
+
+
+        <div class="form-grid">
+
+          <label>
+            Full Name
+            <input
+              name="kinName"
+              required
+            >
+          </label>
+
+
+          <label>
+            Relationship
+            <input
+              name="kinRelationship"
+              required
+            >
+          </label>
+
+
+          <label>
+            Phone Number
+            <input
+              name="kinPhone"
+              type="tel"
+              required
+            >
+          </label>
+
+
+          <label class="wide">
+            Address
+            <textarea
+              name="kinAddress"
+              rows="3"
+              required
+            ></textarea>
+          </label>
+
+        </div>
+
+
+        <button
+          class="primary"
+          type="submit"
+        >
+          Update Profile
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         O LEVEL
+         ===================================================== -->
+
+    <section id="olevel" class="page">
+
+      <div class="title">
+
+        <div class="small-label">
+          STEP 3
+        </div>
+
+        <h1>
+          O' Level Result
+        </h1>
+
+        <p>
+          Provide your O' Level examination result.
+        </p>
+
+      </div>
+
+
+      <form id="olevelForm" class="card form">
+
+        <h2>
+          First O' Level Result
+        </h2>
+
+
+        <div class="form-grid">
+
+          <label>
+            Examination Type
+
+            <select name="exam1" required>
+              <option value="">Select</option>
+              <option>WAEC</option>
+              <option>NECO</option>
+              <option>NABTEB</option>
+              <option>NBAIS</option>
+              <option>Other</option>
+            </select>
+
+          </label>
+
+
+          <label>
+            Examination Year
+            <input
+              name="year1"
+              placeholder="e.g. 2025"
+              required
+            >
+          </label>
+
+
+          <label>
+            Examination Number
+            <input
+              name="number1"
+              required
+            >
+          </label>
+
+
+          <label class="wide">
+            Result Details
+
+            <textarea
+              name="result1"
+              rows="5"
+              placeholder="Enter subjects and grades as applicable."
+              required
+            ></textarea>
+
+          </label>
+
+        </div>
+
+
+        <h2>
+          Second O' Level Result
+          <span class="optional">(Optional)</span>
+        </h2>
+
+
+        <div class="form-grid">
+
+          <label>
+            Examination Type
+
+            <select name="exam2">
+              <option value="">Not Applicable</option>
+              <option>WAEC</option>
+              <option>NECO</option>
+              <option>NABTEB</option>
+              <option>NBAIS</option>
+              <option>Other</option>
+            </select>
+
+          </label>
+
+
+          <label>
+            Examination Year
+            <input name="year2">
+          </label>
+
+
+          <label>
+            Examination Number
+            <input name="number2">
+          </label>
+
+
+          <label class="wide">
+            Result Details
+
+            <textarea
+              name="result2"
+              rows="5"
+              placeholder="Optional second result"
+            ></textarea>
+
+          </label>
+
+        </div>
+
+
+        <label class="declaration">
+
+          <input
+            type="checkbox"
+            name="declare"
+            required
+          >
+
+          I declare that the information supplied is true and correct.
+
+        </label>
+
+
+        <button
+          class="primary"
+          type="submit"
+        >
+          Save O' Level Result
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         PAYMENT
+         ===================================================== -->
+
+    <section id="payment" class="page">
+
+      <div class="title">
+
+        <div class="small-label">
+          STEP 4
+        </div>
+
+        <h1>
+          Screening Payment
+        </h1>
+
+        <p>
+          Generate your payment and complete the screening fee.
+        </p>
+
+      </div>
+
+
+      <div class="card payment-card">
+
+        <div class="amount">
+
+          <span>
+            Screening Fee
+          </span>
+
+          <b>
+            ₦2,000
+          </b>
+
+        </div>
+
+
+        <div class="payment-grid">
+
+          <div>
+            <small>
+              Candidate
+            </small>
+
+            <b id="paymentCandidate">
+              Not available
+            </b>
+          </div>
+
+
+          <div>
+            <small>
+              DE Number
+            </small>
+
+            <b id="paymentDeNumber">
+              Not available
+            </b>
+          </div>
+
+
+          <div>
+            <small>
+              Reference
+            </small>
+
+            <b id="paymentRef">
+              Not generated
+            </b>
+          </div>
+
+
+          <div>
+            <small>
+              Status
+            </small>
+
+            <b id="paymentStatus">
+              Pending
+            </b>
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary"
+          id="generatePayment"
+          type="button"
+        >
+          Generate Payment
+        </button>
+
+
+        <p class="muted">
+          Your payment will only be marked successful after the
+          payment provider confirms the transaction.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ACKNOWLEDGEMENT
+         ===================================================== -->
+
+    <section id="acknowledgement" class="page">
+
+      <div class="title">
+
+        <div class="small-label">
+          STEP 5
+        </div>
+
+        <h1>
+          Acknowledgement Slip
+        </h1>
+
+        <p>
+          Your acknowledgement slip becomes available after
+          successful payment verification.
+        </p>
+
+      </div>
+
+
+      <div class="card ack">
+
+        <div class="ack-logo">
+          <img
+            src="buk-logo.png"
+            alt="BUK"
+          >
+        </div>
+
+
+        <h2>
+          Bayero University, Kano
+        </h2>
+
+
+        <h3>
+          DIRECT ENTRY SCREENING EXERCISE
+        </h3>
+
+
+        <p id="ackMessage">
+          Complete your profile, O' Level information and
+          successful payment before printing your acknowledgement slip.
+        </p>
+
+
+        <button
+          class="primary"
+          id="printAck"
+          type="button"
+        >
+          Print Acknowledgement Slip
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATUS
+         ===================================================== -->
+
+    <section id="status" class="page">
+
+      <div class="title">
+
+        <div class="small-label">
+          APPLICATION
+        </div>
+
+        <h1>
+          Application Status
+        </h1>
+
+      </div>
+
+
+      <div class="card status-card">
+
+        <div class="status-row">
+          <span>Login</span>
+          <b id="sLogin">Pending</b>
+        </div>
+
+
+        <div class="status-row">
+          <span>Candidate Profile</span>
+          <b id="sProfile">Pending</b>
+        </div>
+
+
+        <div class="status-row">
+          <span>O' Level Result</span>
+          <b id="sOlevel">Pending</b>
+        </div>
+
+
+        <div class="status-row">
+          <span>Payment</span>
+          <b id="sPayment">Pending</b>
+        </div>
+
+
+        <div class="status-row">
+          <span>Acknowledgement</span>
+          <b id="sAck">Pending</b>
+        </div>
+
+
+        <div
+          class="status-message"
+          id="statusMessage"
+        >
+          Login with your DE Number, State of Origin and Gender.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
+<!-- Supabase JavaScript client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="script.js"></script>
+
+</body>
+      </html>
