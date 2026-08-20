@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#29445d">
+<title>Bayero University Kano Direct Entry Screening (BUKDES) Online Registration</title>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://js.paystack.co/v2/inline.js"></script>
+
+<style>
+/* =========================================================
+   BUKDES — SINGLE FILE FRONTEND
+   ========================================================= */
+
+*{box-sizing:border-box}
+
+:root{
+  --navy:#29445d;
+  --navy2:#233d55;
+  --blue:#2f7eb8;
+  --teal:#20b995;
+  --light:#f3f4f4;
+  --line:#dfe3e5;
+  --text:#657b8b;
+  --dark:#526a7a;
+  --white:#fff;
+  --danger:#b23b3b;
+  --success:#168b6d;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:#fff;
+  font-size:14px;
+}
+
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.site-header{
+  height:76px;
+  background:#eef0f1;
+  border-bottom:1px solid #d8dcde;
+  display:flex;
+  align-items:center;
+  position:relative;
+  z-index:20;
+}
+
+.header-menu{
+  width:52px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#5c7382;
+  font-size:25px;
+  border:0;
+  background:transparent;
+}
+
+.header-brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+
+.header-brand img{
+  width:54px;
+  height:54px;
+  object-fit:contain;
+}
+
+.header-brand-text{
+  line-height:1.15;
+  font-size:15px;
+  color:#607788;
+}
+
+.header-brand-text b{
+  font-weight:400;
+}
+
+.header-brand-text span{
+  display:block;
+}
+
+.portal{
+  position:relative;
+  min-height:calc(100vh - 76px);
+  overflow:hidden;
+  background:var(--navy);
+}
+
+.left-stage{
+  width:51.5%;
+  min-height:calc(100vh - 76px);
+  background:#f6f6f5;
+  border-right:1px solid #e0e1e1;
+  position:relative;
+  padding:10px 0 42px;
+}
+
+.right-stage{
+  position:absolute;
+  inset:0 0 0 51.5%;
+  background:var(--navy);
+}
+
+.guideline{
+  width:74%;
+  max-width:300px;
+  margin:0 auto;
+  background:#fff;
+  border:1px solid #e0e1e1;
+  padding:22px 18px 25px;
+  min-height:650px;
+}
+
+.guideline-logo{
+  display:block;
+  width:76px;
+  height:76px;
+  object-fit:contain;
+  margin:0 auto 8px;
+}
+
+.guideline h1{
+  margin:0;
+  text-align:center;
+  color:#617789;
+  font-size:27px;
+  line-height:1.15;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.guideline-rule{
+  height:2px;
+  background:#e5e8e9;
+  margin:25px 0 20px;
+}
+
+.guideline p{
+  margin:0 0 12px;
+  color:#80909b;
+  font-size:12px;
+  line-height:1.55;
+}
+
+.guideline h2{
+  margin:9px 0 7px;
+  color:#637a8a;
+  font-size:18px;
+  line-height:1.25;
+}
+
+.guideline .step-copy{
+  margin-bottom:18px;
+}
+
+.login-card{
+  position:absolute;
+  z-index:5;
+  top:555px;
+  left:32.5%;
+  width:640px;
+  max-width:72vw;
+  min-height:335px;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+  padding:18px 38px 16px;
+}
+
+.login-logo{
+  width:62px;
+  height:62px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 2px;
+}
+
+.login-heading{
+  text-align:center;
+  margin:0;
+  color:#647b8b;
+  font-size:21px;
+  line-height:1.15;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.login-subheading{
+  text-align:center;
+  margin:4px 0 15px;
+  color:#647b8b;
+  font-size:18px;
+  line-height:1.15;
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.login-title{
+  text-align:center;
+  color:#687d8c;
+  font-size:17px;
+  margin:0 0 10px;
+  font-weight:700;
+}
+
+.login-form{
+  border-top:1px solid #eceeee;
+  border-bottom:1px solid #eceeee;
+  padding:12px 0 13px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  align-items:center;
+  gap:8px;
+  margin:8px auto;
+  max-width:470px;
+}
+
+.form-row label{
+  text-align:right;
+  color:#667985;
+  font-size:11px;
+  font-weight:400;
+}
+
+.form-row label::after{
+  content:" *";
+  color:#777;
+}
+
+.form-row input,
+.form-row select{
+  width:100%;
+  height:35px;
+  border:1px solid #bfc5c8;
+  background:#fff;
+  color:#6b7780;
+  border-radius:0;
+  padding:7px 9px;
+  outline:none;
+  font-size:12px;
+}
+
+.form-row input:focus,
+.form-row select:focus{
+  border-color:#5f9ac1;
+}
+
+.login-actions{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:13px 0 12px;
+}
+
+.btn{
+  min-width:118px;
+  height:38px;
+  border:0;
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  border-radius:2px;
+}
+
+.btn-reset{background:#2e7eb9}
+.btn-login{background:#20b995}
+.btn-primary{background:#2e7eb9}
+.btn-success{background:#20b995}
+.btn-danger{background:#b34a4a}
+
+.login-help{
+  text-align:center;
+  color:#a0a5a7;
+  font-size:11px;
+  line-height:1.4;
+}
+
+.login-help b{
+  color:#697b84;
+}
+
+.steps-panel{
+  width:74%;
+  max-width:300px;
+  margin:30px auto 0;
+  padding-bottom:30px;
+}
+
+.steps-panel h2{
+  margin:0 0 8px;
+  color:#63798a;
+  font-size:19px;
+}
+
+.steps-panel p{
+  color:#80909b;
+  font-size:12px;
+  line-height:1.55;
+  margin:0;
+}
+
+.app-shell{
+  display:none;
+  min-height:calc(100vh - 76px);
+  background:#f5f6f6;
+}
+
+.app-shell.visible{display:block}
+
+.app-inner{
+  width:min(1040px,94%);
+  margin:0 auto;
+  padding:25px 0 50px;
+}
+
+.app-header{
+  background:#fff;
+  border:1px solid #e1e4e5;
+  padding:17px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.app-header h1{
+  margin:0;
+  color:#5e7585;
+  font-size:21px;
+}
+
+.app-header p{
+  margin:5px 0 0;
+  color:#89969d;
+  font-size:12px;
+}
+
+.logout{
+  background:#2e7eb9;
+  color:#fff;
+  border:0;
+  padding:10px 14px;
+  font-size:12px;
+}
+
+.app-nav{
+  background:#fff;
+  border:1px solid #e1e4e5;
+  border-top:0;
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.app-nav button{
+  border:0;
+  border-right:1px solid #e1e4e5;
+  background:#fff;
+  color:#667d8c;
+  padding:12px 15px;
+  font-size:12px;
+}
+
+.app-nav button.active{
+  background:#eaf3f8;
+  color:#2674aa;
+}
+
+.app-page{
+  display:none;
+  margin-top:20px
+}
+
+.app-page.active{
+  display:block
+}
+
+.panel{
+  background:#fff;
+  border:1px solid #e1e4e5;
+  padding:24px;
+}
+
+.panel h2{
+  color:#62798a;
+  font-size:19px;
+  margin:0 0 7px;
+}
+
+.panel .intro{
+  color:#87949a;
+  font-size:12px;
+  margin:0 0 18px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px 20px;
+}
+
+.field label{
+  display:block;
+  color:#657984;
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid #c9ced1;
+  background:#fff;
+  color:#586a74;
+  padding:10px;
+  font-size:13px;
+  outline:none;
+}
+
+.field textarea{
+  min-height:82px;
+  resize:vertical;
+}
+
+.full{
+  grid-column:1/-1
+}
+
+.save-row{
+  margin-top:18px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.notice{
+  background:#f3f7f9;
+  border-left:3px solid #2f7eb8;
+  padding:12px;
+  color:#71838d;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.payment-box{
+  max-width:650px;
+}
+
+.payment-amount{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #e2e5e6;
+  padding-bottom:17px;
+  margin-bottom:15px;
+}
+
+.payment-amount span{
+  font-size:13px;
+  color:#87949a
+}
+
+.payment-amount strong{
+  font-size:25px;
+  color:#2f7eb8
+}
+
+.payment-info{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.info{
+  border:1px solid #e3e6e7;
+  padding:12px;
+}
+
+.info small{
+  display:block;
+  color:#9aa2a6;
+  font-size:10px;
+  margin-bottom:5px
+}
+
+.info b{
+  font-size:12px;
+  color:#607580
+}
+
+.slip{
+  max-width:720px;
+  margin:0 auto;
+  background:#fff;
+  border:1px solid #d8dcde;
+  padding:35px;
+  text-align:center;
+}
+
+.slip img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+}
+
+.slip h2{
+  text-transform:uppercase;
+  margin:10px 0 4px;
+  color:#5f7585;
+}
+
+.slip h3{
+  margin:0 0 22px;
+  color:#2f7eb8;
+  font-size:14px;
+}
+
+.slip-table{
+  width:100%;
+  border-collapse:collapse;
+  text-align:left;
+  font-size:12px;
+}
+
+.slip-table td{
+  border:1px solid #e0e3e4;
+  padding:9px;
+}
+
+.slip-table td:first-child{
+  width:35%;
+  font-weight:700;
+  color:#697c86;
+  background:#f5f7f8;
+}
+
+.status-list{
+  max-width:700px;
+}
+
+.status-line{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 0;
+  border-bottom:1px solid #e2e5e6;
+  color:#647984;
+  font-size:13px;
+}
+
+.status-line b{
+  color:#20a983
+}
+
+.message{
+  margin-top:18px;
+  padding:12px;
+  background:#eef7f4;
+  color:#5f7e73;
+  font-size:12px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,20px);
+  background:#263b4d;
+  color:#fff;
+  padding:11px 16px;
+  font-size:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  z-index:100;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+@media(max-width:700px){
+
+  html,body{
+    font-size:12px
+  }
+
+  .site-header{
+    height:76px;
+  }
+
+  .header-menu{
+    width:43px;
+    font-size:23px;
+  }
+
+  .header-brand img{
+    width:48px;
+    height:48px;
+  }
+
+  .header-brand-text{
+    font-size:12px;
+  }
+
+  .portal{
+    min-height:calc(100vh - 76px);
+  }
+
+  .left-stage{
+    width:51.5%;
+    min-height:calc(100vh - 76px);
+    padding-top:8px;
+  }
+
+  .right-stage{
+    left:51.5%;
+  }
+
+  .guideline{
+    width:72%;
+    padding:17px 12px 20px;
+    min-height:620px;
+  }
+
+  .guideline-logo{
+    width:62px;
+    height:62px;
+  }
+
+  .guideline h1{
+    font-size:20px;
+  }
+
+  .guideline-rule{
+    margin:18px 0 15px;
+  }
+
+  .guideline p{
+    font-size:9px;
+    line-height:1.5;
+  }
+
+  .guideline h2{
+    font-size:14px;
+  }
+
+  .login-card{
+    top:470px;
+    left:25%;
+    width:650px;
+    max-width:90vw;
+    padding:15px 24px;
+  }
+
+  .login-heading{
+    font-size:17px;
+  }
+
+  .login-subheading{
+    font-size:15px;
+  }
+
+  .login-title{
+    font-size:14px;
+  }
+
+  .form-row{
+    grid-template-columns:125px 1fr;
+  }
+
+  .app-inner{
+    width:94%;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .payment-info{
+    grid-template-columns:1fr;
+  }
+
+  .app-header{
+    align-items:flex-start;
+  }
+
+  .app-nav button{
+    flex:1 1 auto;
+  }
+
+  .slip{
+    padding:20px;
+  }
+}
+
+@media print{
+
+  .site-header,
+  .app-header,
+  .app-nav,
+  .app-page:not(#page-acknowledgement),
+  .logout,
+  #printAck{
+    display:none!important;
+  }
+
+  .app-page#page-acknowledgement{
+    display:block!important;
+  }
+
+  .app-shell,
+  .app-inner{
+    background:#fff;
+    padding:0;
+  }
+
+  .panel{
+    border:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <button class="header-menu" id="menuButton" type="button">☰</button>
+
+  <div class="header-brand">
+    <img src="buk-logo.png" alt="BUK">
+    <div class="header-brand-text">
+      <b>Bayero University, Kano</b>
+      <span>Direct Entry Screening (BUKDES)</span>
+    </div>
+  </div>
+</header>
+
+<section class="portal" id="landing">
+
+  <div class="left-stage">
+
+    <div class="guideline">
+
+      <img class="guideline-logo" src="buk-logo.png" alt="BUK">
+
+      <h1>Online Registration<br>Guidelines</h1>
+
+      <div class="guideline-rule"></div>
+
+      <p>
+        Please follow the registration steps carefully.
+        Ensure that all information supplied is accurate
+        and corresponds with your official documents.
+      </p>
+
+      <h2>Step 1: Login</h2>
+
+      <p class="step-copy">
+        Enter your DE Number, State of Origin and Gender
+        to access your BUKDES application.
+      </p>
+
+      <h2>Step 2: Profile Update</h2>
+
+      <p class="step-copy">
+        Complete your candidate profile with accurate
+        personal and contact information.
+      </p>
+
+      <h2>Step 3: O' Level Result</h2>
+
+      <p class="step-copy">
+        Submit your O' Level examination information
+        before proceeding to payment.
+      </p>
+
+      <h2>Step 4: Payment</h2>
+
+      <p>
+        Pay the required BUKDES screening fee through
+        the secure payment gateway.
+      </p>
+
+    </div>
+
+    <div class="steps-panel">
+      <h2>BUKDES Registration</h2>
+      <p>
+        Login to continue with your Direct Entry Screening
+        registration.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="right-stage"></div>
+
+  <div class="login-card">
+
+    <img class="login-logo" src="buk-logo.png" alt="BUK">
+
+    <h1 class="login-heading">BAYERO UNIVERSITY, KANO</h1>
+    <div class="login-subheading">
+      DIRECT ENTRY SCREENING (BUKDES)
+    </div>
+
+    <div class="login-title">
+      ONLINE REGISTRATION
+    </div>
+
+    <form class="login-form" id="loginForm">
+
+      <div class="form-row">
+        <label for="deNumber">DE Number</label>
+        <input
+          id="deNumber"
+          name="deNumber"
+          type="text"
+          autocomplete="off"
+          required
+        >
+      </div>
+
+      <div class="form-row">
+        <label for="loginState">State of Origin</label>
+        <select id="loginState" name="state" required>
+          <option value="">Select State</option>
+          <option>Abia</option>
+          <option>Adamawa</option>
+          <option>Akwa Ibom</option>
+          <option>Anambra</option>
+          <option>Bauchi</option>
+          <option>Bayelsa</option>
+          <option>Benue</option>
+          <option>Borno</option>
+          <option>Cross River</option>
+          <option>Delta</option>
+          <option>Ebonyi</option>
+          <option>Edo</option>
+          <option>Ekiti</option>
+          <option>Enugu</option>
+          <option>Gombe</option>
+          <option>Imo</option>
+          <option>Jigawa</option>
+          <option>Kaduna</option>
+          <option>Kano</option>
+          <option>Katsina</option>
+          <option>Kebbi</option>
+          <option>Kogi</option>
+          <option>Kwara</option>
+          <option>Lagos</option>
+          <option>Nasarawa</option>
+          <option>Niger</option>
+          <option>Ogun</option>
+          <option>Ondo</option>
+          <option>Osun</option>
+          <option>Oyo</option>
+          <option>Plateau</option>
+          <option>Rivers</option>
+          <option>Sokoto</option>
+          <option>Taraba</option>
+          <option>Yobe</option>
+          <option>Zamfara</option>
+          <option>FCT</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="loginGender">Gender</label>
+        <select id="loginGender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="login-actions">
+        <button
+          class="btn btn-reset"
+          type="reset"
+        >
+          Reset
+        </button>
+
+        <button
+          class="btn btn-login"
+          type="submit"
+        >
+          Login
+        </button>
+      </div>
+
+    </form>
+
+    <div class="login-help">
+      For enquiries, contact the BUKDES support office.
+    </div>
+
+  </div>
+
+</section>
+
+<section class="app-shell" id="appShell">
+
+  <div class="app-inner">
+
+    <div class="app-header">
+
+      <div>
+        <h1>BUKDES Online Registration</h1>
+        <p id="candidateWelcome">
+          Direct Entry Screening application portal
+        </p>
+      </div>
+
+      <button class="logout" id="logoutButton" type="button">
+        Logout
+      </button>
+
+    </div>
+
+    <nav class="app-nav">
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="home"
+      >
+        Home
+      </button>
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="profile"
+      >
+        Profile Update
+      </button>
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="olevel"
+      >
+        O' Level Result
+      </button>
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="payment"
+      >
+        Payment
+      </button>
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="acknowledgement"
+      >
+        Acknowledgement
+      </button>
+
+      <button
+        type="button"
+        class="app-nav-btn"
+        data-page="status"
+      >
+        Status
+      </button>
+
+    </nav>
+
+    <section class="app-page" id="page-home">
+
+      <div class="panel">
+
+        <h2>Welcome to BUKDES</h2>
+
+        <p class="intro">
+          Complete your registration in the required order.
+        </p>
+
+        <div class="notice">
+          Your profile and O' Level information must be
+          completed before payment can be initiated.
+        </div>
+
+        <div class="status-line">
+          <span>Candidate</span>
+          <b id="candidateName">Candidate</b>
+        </div>
+
+        <div class="status-line">
+          <span>DE Number</span>
+          <b id="homeDe">—</b>
+        </div>
+
+        <div class="status-line">
+          <span>O' Level</span>
+          <b id="homeOlevel">Pending</b>
+        </div>
+
+        <div class="status-line">
+          <span>Payment</span>
+          <b id="homePayment">Pending</b>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="app-page" id="page-profile">
+
+      <div class="panel">
+
+        <h2>Profile Update</h2>
+
+        <p class="intro">
+          Enter your personal and contact information.
+        </p>
+
+        <form id="profileForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label>First Name</label>
+              <input name="firstName" required>
+            </div>
+
+            <div class="field">
+              <label>Middle Name</label>
+              <input name="middleName">
+            </div>
+
+            <div class="field">
+              <label>Last Name</label>
+              <input name="lastName" required>
+            </div>
+
+            <div class="field">
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label>Phone Number</label>
+              <input name="phone" required>
+            </div>
+
+            <div class="field">
+              <label>Alternative Phone</label>
+              <input name="altPhone">
+            </div>
+
+            <div class="field">
+              <label>Alternative Email</label>
+              <input
+                type="email"
+                name="altEmail"
+              >
+            </div>
+
+            <div class="field full">
+              <label>Residential Address</label>
+              <textarea name="address" required></textarea>
+            </div>
+
+            <div class="field">
+              <label>Next of Kin Name</label>
+              <input name="kinName" required>
+            </div>
+
+            <div class="field">
+              <label>Next of Kin Relationship</label>
+              <input name="kinRelationship">
+            </div>
+
+            <div class="field">
+              <label>Next of Kin Phone</label>
+              <input name="kinPhone" required>
+            </div>
+
+          </div>
+
+          <div class="save-row">
+            <button class="btn btn-primary" type="submit">
+              Save Profile
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <section class="app-page" id="page-olevel">
+
+      <div class="panel">
+
+        <h2>O' Level Result</h2>
+
+        <p class="intro">
+          Enter your O' Level examination information.
+        </p>
+
+        <form id="olevelForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label>Examination 1</label>
+              <select name="exam1" required>
+                <option value="">Select Examination</option>
+                <option>WAEC</option>
+                <option>NECO</option>
+                <option>NABTEB</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Year 1</label>
+              <input
+                name="year1"
+                type="number"
+                min="19
